@@ -205,7 +205,6 @@
   overflow: hidden;
   border-top: 1px solid #292929;
   border-left: 1px solid #292929;
-  
 }
 .calendar__days div {
   width: calc(1000px/7);
@@ -218,7 +217,6 @@
   border-bottom: 1px solid #292929;;
   background-color: #FFF;
 }
-
 .calendar__days div p {
   margin: 8px 0px 0px 8px;
 }
