@@ -1,1 +1,0 @@
-https://staspol216.github.io/AlmanacApp/
