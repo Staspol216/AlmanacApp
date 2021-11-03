@@ -1,0 +1,83 @@
+/*-------------------NULL CSS---------------*/
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *,*:before,*:after {
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Roboto;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  ul, ol, li {
+    list-style: none;
+  }
+/*----------------------WRAPPER------------------------*/
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+/*--------------------CONTAINER--------------------------*/
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    box-sizing: content-box;
+    padding: 0 15px;
+}
+/*--------------------HEADER--------------------------*/
+.header {
+    background-color: #E5E5E5;
+
+}
+.header__container {
+
+}
+.header__interface {
+    display: flex;
+    justify-content: space-between;
+
+}
+.header__buttons {
+
+}
+.header__search-form {
+
+}
+/*---------------------------CALENDAR---------------------------*/
+.calendar {
+
+}
+.calendar__container {
+
+}
+.calendar__nav {
+
+}
+.calendar__scroll-month {
+}
+.calendar__button-left {
+}
+.calendar__button-right {
+}
+.calendar__today-block {
+}
+.calendar__days {
+}
+
