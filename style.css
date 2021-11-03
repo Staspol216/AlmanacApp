@@ -76,7 +76,7 @@
 .header__search-form {
   min-width: 250px;
   height: 28px;
-  background: url(/icons/icon.png) left no-repeat;
+  background: url(icons/icon.png) left no-repeat;
   display: flex;
   justify-content: right;
 
