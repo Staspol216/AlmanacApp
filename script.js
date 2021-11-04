@@ -2,8 +2,38 @@ const monthAndYear = document.querySelector(".calendar__months-year");
 const calendarDays = document.querySelector(".calendar__days");
 const leftBtn = document.querySelector(".calendar__button-left");
 const rightBtn = document.querySelector(".calendar__button-right");
+const daysCalendar = document.querySelector(".calendar__days");
 
 const date = new Date();
+
+const monthsArr = [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+];
+
+const weekdaysArr = [
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
+    "Воскресенье"
+];
+
+let clicked = null;
+let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
+
 
 function displayCalendar() {
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
@@ -15,57 +45,35 @@ function displayCalendar() {
 
     date.setDate(1);
 
-    const monthsArr = [
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентябрь",
-        "Октябрь",
-        "Ноябрь",
-        "Декабрь"
-    ];
     monthAndYear.innerHTML = monthsArr[date.getMonth()] + ` ${date.getFullYear()}`;
 
-    const weekdaysArr = [
-        "Понедельник",
-        "Вторник",
-        "Среда",
-        "Четверг",
-        "Пятница",
-        "Суббота",
-        "Воскресенье"
-    ];
+    let indexWeekdays = 0;
+    const sumAllDays = firstDayIndex + lastDay + daysNextMonths;
+    let countPrevDays = firstDayIndex;
 
-    let days = "";
-    let indexWeekadys = 0;
+    daysCalendar.innerHTML = "";
 
-    while (firstDayIndex > 0) {
-        days += `<div><p>${weekdaysArr[indexWeekadys]}, ${prevLastDay - firstDayIndex + 1}</p></div>`;
-        firstDayIndex--;
-        indexWeekadys++;
-    }
+    for (let i = 1; i <= sumAllDays; i++ ) {
+        const daySquare = document.createElement("div");
+        daySquare.classList.add("day");
 
-    for (let i = 1; i <= lastDay; i++) {
-        if ( indexWeekadys < 7) {
-        days += `<div><p>${weekdaysArr[indexWeekadys]}, ${i}</p></div>`;
-        indexWeekadys++;
-        } else {
-            days += `<div><p>${i}</p></div>`;
+        const dayString = "";
+
+        if (i < (firstDayIndex + 1)) {
+            daySquare.innerHTML = `<p>${weekdaysArr[indexWeekdays]}, ${prevLastDay - countPrevDays + 1}</p>`;
+            countPrevDays--;
+            indexWeekdays++;
+        } else if (i <= lastDay && indexWeekdays < 7) {
+            daySquare.innerHTML = `<p>${weekdaysArr[indexWeekdays]}, ${i - firstDayIndex}</p>`;
+            indexWeekdays++;
+        } else if (i <= lastDay + firstDayIndex) {
+            daySquare.innerHTML = `<p>${i - firstDayIndex}</p>`;
+        } else { 
+            daySquare.innerHTML = `<p>${i - firstDayIndex - lastDay}</p>`;
         }
+        daysCalendar.appendChild(daySquare);
     }
-
-    for (let j = 1; j <= daysNextMonths; j++) {
-        days += `<div><p>${j}</p></div>`;
-    }
-
-    calendarDays.innerHTML = days;
 }
-
 
 leftBtn.addEventListener("click", function() {
     date.setMonth(date.getMonth() - 1);
@@ -78,7 +86,3 @@ rightBtn.addEventListener("click", function() {
 });
 
 displayCalendar();
-
-
-
-

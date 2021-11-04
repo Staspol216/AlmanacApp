@@ -14,13 +14,11 @@
             <div class="header__container container">
                 <div class="header__controls">
                     <div class="header__buttons">
-                        <button class ="header__action-button">Добавить</button>
-                        <button class ="header__action-button">Обновить</button>
+                        <button class ="header__add-button main-button">Добавить</button>
+                        <button class ="header__refresh-button main-button">Обновить</button>
                     </div>
                     <div class="header__search-form">
-                        <form action="">
-                        <input type="text" class="header__input" placeholder="Placeholder">
-                        </form>
+                        <input type="text" class="header__input input-form" placeholder="Placeholder">
                     </div>
                 </div>
             </div>
@@ -33,11 +31,26 @@
                         <p class = "calendar__months-year"></p>
                         <button class = "calendar__button-right"></button>
                     </div>
-                    <button class="calendar__extra-button">Сегодня</button>
+                    <button class="calendar__today-button extra-button">Сегодня</button>
                 </nav>
                 <div class="calendar__days"></div>
             </div>
         </main>
+    </div>
+    <div class="popup">
+        <div class="popup__content">
+            <div class="popup__close-btn">&times;</div>
+            <div class="popup__form-elements">
+                <input type="text" class="popup__input input-form" placeholder="Событие">
+                <input type="text" class="popup__input input-form" placeholder="День, месяц, год">
+                <input type="text" class="popup__input input-form" placeholder="Имена участников">
+                <textarea class="popup__input-descr input-form" cols="30" rows="10" placeholder="Описание"></textarea>
+            <div class="popup__buttons">
+                <button class="popup__button extra-button">Готово</button>
+                <button class="popup__button extra-button">Удалить</button>
+            </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

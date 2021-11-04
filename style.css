@@ -47,51 +47,8 @@
 .header__container {
 
 }
-/*--------------------HEADER--------------------------*/
-.header {
-    background-color: #F4F4F4;
-    min-height: 100px;
-
-}
-.header__controls {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 52px;
-
-}
-.header__buttons {
-  min-width: 170px;
-  display: flex;
-  justify-content: space-between;
-}
-.header__action-button {
-  background-color:#0271C7;
-  min-width: 80px;
-  min-height: 26px;
-  color: #FFF;
-  border-radius: 2px;
-  font-size: 12px;
-  line-height: 117%;
-  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-}
-.header__action-button:hover {
-  background-color: #27A1FF;
-}
-.header__action-button:active {
-  background-color: #C2E4FE;
-}
-.header__action-button:disabled {
-  background-color: #CFCFCF;
-}
-.header__search-form {
-  min-width: 250px;
-  height: 28px;
-  background: url(img/placeholder_icon/loupe.png) left no-repeat;
-  display: flex;
-  justify-content: right;
-
-}
-.header__input {
+/*-----------------------CONTROL ELEMENTS------------------*/
+.input-form {
   display: block;
   height: 28px;
   width: 210px;
@@ -108,15 +65,90 @@
 ::-webkit-input-placeholder {
   color:#CFCFCF;
 }
-.header__input:focus {
+.input-form:focus {
   border: 1px solid #27A1FF;
 }
-.header__input:invalid {
+.input-form:invalid {
   border: 1px solid #E94E4E;
   color: #E94E4E;
 }
-.header__input:disabled {
+.input-form:disabled {
   background-color: #F4F4F4;
+}
+
+.extra-button {
+  margin: 15px 0px;
+  background-color: #FFF;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+  min-width: 60px;
+  height: 18px;
+  color: #292929;
+  font-size: 12px;
+  line-height: 117%;
+  font-weight: 400;
+}
+.extra-button:hover {
+  background-color: #6B6B6B;
+  color: #FFF;
+}
+.extra-button:active {
+  background-color: #CFCFCF;
+  color: #FFF;
+}
+.extra-button:disabled {
+  background-color: #FFFFFF;
+  color: #CFCFCF;
+}
+
+.main-button {
+  background-color:#0271C7;
+  min-width: 80px;
+  min-height: 26px;
+  color: #FFF;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 117%;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+.main-button:hover {
+  background-color: #27A1FF;
+}
+.main-button:active {
+  background-color: #C2E4FE;
+}
+.main-button:disabled {
+  background-color: #CFCFCF;
+}
+
+/*--------------------HEADER--------------------------*/
+
+.header {
+    background-color: #F4F4F4;
+    min-height: 100px;
+
+}
+.header__controls {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 52px;
+
+}
+.header__buttons {
+  min-width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__search-form {
+  min-width: 250px;
+  height: 28px;
+  background: url(img/placeholder_icon/loupe.png) left no-repeat;
+  display: flex;
+  justify-content: right;
+
+}
+.header__input {
 }
 /*---------------------------CALENDAR---------------------------*/
 .calendar {
@@ -133,7 +165,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 12px 0px;
+  margin: 12px 10px 12px 0px;
 }
 .calendar__button-left {
   width: 32px;
@@ -149,7 +181,6 @@
 .calendar__button-left:disabled {
   background: url(img/arrow/left_arrow_months_disabled.png) left no-repeat;
 }
-
 .calendar__button-right {
   width: 32px;
   height: 24px;
@@ -164,7 +195,6 @@
 .calendar__button-right:disabled {
   background: url(img/arrow/right_arrow_months_disabled.png) left no-repeat;
 }
-
 .calendar__months-year {
   font-size: 18px;
   font-weight: 400;
@@ -172,30 +202,6 @@
   color: #292929;
 }
 
-.calendar__extra-button {
-  margin: 15px 0px 15px 10px;
-  background-color: #FFF;
-  border-radius: 4px;
-  box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
-  min-width: 60px;
-  height: 18px;
-  color: #292929;
-  font-size: 12px;
-  line-height: 117%;
-  font-weight: 400;
-}
-.calendar__extra-button:hover {
-  background-color: #6B6B6B;
-  color: #FFF;
-}
-.calendar__extra-button:active {
-  background-color: #CFCFCF;
-  color: #FFF;
-}
-.calendar__extra-button:disabled {
-  background-color: #FFFFFF;
-  color: #CFCFCF;
-}
 .calendar__days {
   box-sizing: content-box;
   width: 100%;
@@ -227,5 +233,40 @@
 
 .calendar__days div p {
   margin: 8px 0px 0px 8px;
+}
+
+/*---------------POPUP-----------------*/
+.popup {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  display: none;
+  width: 300px;
+  height: 315px;
+  border: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.25));
+}
+.popup__content {
+  padding: 12px;
+}
+.popup__close-btn {
+  text-align: right;
+}
+.popup__form-elements {
+}
+.popup__input {
+  margin-top: 8px;
+  width: 100%;
+}
+.popup__input-descr {
+  margin-top: 24px;
+  width: 100%;
+  height: 125px;
+
+}
+.popup__buttons {
+  margin-top: 8px;
+}
+.popup__button:not(:last-child) {
+  margin-right: 20px;
 }
 
