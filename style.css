@@ -212,7 +212,8 @@
   border-top: 1px solid #292929;
   border-left: 1px solid #292929;
 }
-.calendar__days div {
+/*----------------------DAY CELL--------------------------*/
+.day {
   width: calc(1000px/7);
   height: 120px;
   color: #6B6B6B;
@@ -224,15 +225,26 @@
   background-color: #FFF;
 }
 
-.calendar__days div:hover {
+.day:hover {
   background-color: #F4F4F4;
 }
-.calendar__days div:active {
+.day:active {
   box-shadow: 0px 0px 10px 2px #0271C7;
 }
-
-.calendar__days div p {
+.day p {
   margin: 8px 0px 0px 8px;
+}
+.day__event {
+  font-size: 14px;
+  line-height: 117%;
+  color: #292929;
+  font-weight: 400;
+}
+.day__name {
+  font-size: 14px;
+  line-height: 117%;
+  color: #6B6B6B;
+  font-weight: 400;
 }
 
 /*---------------POPUP-----------------*/

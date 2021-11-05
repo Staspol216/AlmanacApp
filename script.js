@@ -13,8 +13,6 @@ const popupInputDescr = document.querySelector(".popup__input-descr");
 
 
 const date = new Date();
-const month = date.getMonth();
-const year = date.getFullYear();
 
 const monthsArr = [
     "Январь",
@@ -66,6 +64,8 @@ function closePopup() {
     displayCalendar();
 }
 
+let dayString = "";
+
 
 function displayCalendar() {
     date.setDate(1);
@@ -90,21 +90,23 @@ function displayCalendar() {
         let dayString = "";
         if (i < (firstDayIndex + 1)) {
             daySquare.innerHTML = `<p>${weekdaysArr[indexWeekdays]}, ${prevLastDay - countPrevDays + 1}</p>`;
-            dayString = `${prevLastDay - countPrevDays + 1}/${month-1}/${year}`;
+            dayString = `${prevLastDay - countPrevDays + 1}/${date.getMonth()-1}/${date.getFullYear()}`;
             countPrevDays--;
             indexWeekdays++;
         } else if (i <= lastDay && indexWeekdays < 7) {
             daySquare.innerHTML = `<p>${weekdaysArr[indexWeekdays]}, ${i - firstDayIndex}</p>`;
-            dayString = `${i - firstDayIndex}/${month}/${year}`;
+            dayString = `${i - firstDayIndex}/${date.getMonth()}/${date.getFullYear()}`;
             indexWeekdays++;
         } else if (i <= lastDay + firstDayIndex) {
             daySquare.innerHTML = `<p>${i - firstDayIndex}</p>`;
-            dayString = `${i - firstDayIndex}/${month}/${year}`;
+            dayString = `${i - firstDayIndex}/${date.getMonth()}/${date.getFullYear()}`;
         } else { 
             daySquare.innerHTML = `<p>${i - firstDayIndex - lastDay}</p>`;
-            dayString = `${i - firstDayIndex - lastDay}/${month+1}/${year}`;
+            dayString = `${i - firstDayIndex - lastDay}/${date.getMonth()+1}/${date.getFullYear()}`;
         }
+        
         const eventForDay = events.find(e => e.date === dayString);
+
         if (eventForDay) {
             const eventP = document.createElement("p");
             eventP.classList.add("day__event");
@@ -150,9 +152,5 @@ readyBtn.addEventListener("click", function() {
         }
     });
 });
-
-
-
-
 
 displayCalendar();
