@@ -38,19 +38,23 @@
         </main>
     </div>
     <div class="popup">
-        <div class="popup__content">
-            <div class="popup__close-btn">&times;</div>
-            <div class="popup__form-elements">
-                <input type="text" class="popup__input input-form" placeholder="Событие">
-                <input type="text" class="popup__input input-form" placeholder="День, месяц, год">
-                <input type="text" class="popup__input input-form" placeholder="Имена участников">
-                <textarea class="popup__input-descr input-form" cols="30" rows="10" placeholder="Описание"></textarea>
-            <div class="popup__buttons">
-                <button class="popup__button extra-button">Готово</button>
-                <button class="popup__button extra-button">Удалить</button>
+            <div class="popup__container">
+                <div class="popup__content">
+                    <div class="popup__head">
+                    <button class="popup__close-btn">&times;</button>
+                    </div>
+                    <div class="popup__form-elements">
+                        <input type="text" id="eventInput" class="popup__input input-form" placeholder="Событие">
+                        <input type="text" id="dateInput" class="popup__input input-form" placeholder="День, месяц, год">
+                        <input type="text" id="nameInput" class="popup__input input-form" placeholder="Имена участников">
+                        <textarea class="popup__input-descr input-form" cols="30" rows="10" placeholder="Описание"></textarea>
+                    <div class="popup__buttons">
+                        <button id = "readyBtn" class="popup__button extra-button">Готово</button>
+                        <button id = "deleteBtn" class="popup__button extra-button">Удалить</button>
+                    </div>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
     </div>
     <script src="script.js"></script>
 </body>
