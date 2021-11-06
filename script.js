@@ -2,13 +2,20 @@ const monthAndYear = document.querySelector(".calendar__months-year");
 const leftBtn = document.querySelector(".calendar__button-left");
 const rightBtn = document.querySelector(".calendar__button-right");
 const daysCalendar = document.querySelector(".calendar__days");
+
+
+const newEventPopup = document.querySelector(".popup");
+const popupInput = document.querySelectorAll(".popup__input");
+const popupInputDescr = document.querySelector(".popup__input-descr");
 const closeBtn = document.querySelector(".popup__close-btn");
 const readyBtn = document.getElementById("readyBtn");
 const deleteBtn = document.getElementById("deleteBtn");
-const newEventPopup = document.querySelector(".popup");
 
-const popupInput = document.querySelectorAll(".popup__input");
-const popupInputDescr = document.querySelector(".popup__input-descr");
+
+const popupReadyEvent = document.querySelector(".popup_readyEv");
+const popupNameEvent = document.querySelector(".popup__nameEvent");
+const popupDateEvent = document.querySelector(".popup__dateEvent");
+const popupNamesEvent = document.querySelector(".popup__namesEvent");
 
 
 
@@ -47,9 +54,13 @@ function openPopup(date) {
     clicked = date;
 
     const eventForDay = events.find(e => e.date === clicked);
+    console.log(eventForDay);
 
     if (eventForDay) {
-        console.log ("already exists");
+        popupReadyEvent.style.display = "block";
+        popupNameEvent.textContent = eventForDay.Event;
+        popupDateEvent.textContent = eventForDay.day;
+        popupNamesEvent.textContent += eventForDay.Name;
     } else {
         newEventPopup.style.display = "block";
     }
@@ -63,8 +74,6 @@ function closePopup() {
     });
     displayCalendar();
 }
-
-let dayString = "";
 
 
 function displayCalendar() {
@@ -104,7 +113,7 @@ function displayCalendar() {
             daySquare.innerHTML = `<p>${i - firstDayIndex - lastDay}</p>`;
             dayString = `${i - firstDayIndex - lastDay}/${date.getMonth()+1}/${date.getFullYear()}`;
         }
-        
+
         const eventForDay = events.find(e => e.date === dayString);
 
         if (eventForDay) {

@@ -288,6 +288,7 @@
   height: 8px;
 }
 .popup__form-elements {
+
 }
 .popup__input {
   margin-top: 8px;
@@ -309,3 +310,41 @@
   margin-right: 20px;
 }
 
+.popup_readyEv {
+  height: 302px;
+}
+.popup_readyEv::after, .popup_readyEV::before  {
+  left: -10px; bottom: 280px;
+}
+
+.popup__form-elements_readyEv {
+
+}
+
+.popup__nameEvent {
+  font-size: 18px;
+  line-height: 117%;
+  color: #292929;
+  font-weight: 400;
+  margin-top: 8px;
+}
+.popup__dateEvent {
+  font-size: 14px;
+  line-height: 117%;
+  color: #292929;
+  font-weight: 300;
+  margin: 16px 0px;
+}
+.popup__participantsEvent {
+  font-size: 14px;
+  line-height: 117%;
+  font-weight: 300;
+  color: #6B6B6B;
+}
+.popup__namesEvent {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 117%;
+  color: #292929;
+  margin: 4px 0px -16px 0px;;
+}
