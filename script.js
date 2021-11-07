@@ -82,18 +82,17 @@ function closePopup() {
 }
 
 function saveEvent() {
-    popupInput.forEach(function(text) {
-            let objDataInput = {};
-            objDataInput.date = clicked;
-            objDataInput.Event = popupInput[0].value;
-            objDataInput.day = popupInput[1].value;
-            objDataInput.Name = popupInput[2].value;
-            objDataInput.Descr = popupInputDescr.value;
-            events.push(objDataInput);
-            localStorage.setItem("events", JSON.stringify(events));
-            closePopup();
-    });
+    let objDataInput = {};
+    objDataInput.date = clicked;
+    objDataInput.Event = popupInput[0].value;
+    objDataInput.day = popupInput[1].value;
+    objDataInput.Name = popupInput[2].value;
+    objDataInput.Descr = popupInputDescr.value;
+    events.push(objDataInput);
+    localStorage.setItem("events", JSON.stringify(events));
+    closePopup();
 }
+
 
 function deleteEvent() {
     events = events.filter(e => e.date !== clicked);
@@ -211,3 +210,4 @@ readyBtnExistEvent.addEventListener("click", editDescr);
 closeBtnQuickEvent.addEventListener("click", closePopup);
 
 displayCalendar();
+
