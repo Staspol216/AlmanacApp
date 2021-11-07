@@ -34,18 +34,21 @@
 /*----------------------WRAPPER------------------------*/
 .wrapper {
     min-height: 100%;
+    width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper header {
+  align-self: stretch;
 }
 /*--------------------CONTAINER--------------------------*/
 .container {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 12px;
-}
-.header__container {
-
 }
 /*-----------------------CONTROL ELEMENTS------------------*/
 .input-form {
@@ -208,9 +211,9 @@
   display: flex;
   flex-wrap: wrap;
   max-height: 600px;
+  border-bottom: 1px solid #292929;
+  border-right: 1px solid #292929;
   overflow: hidden;
-  border-top: 1px solid #292929;
-  border-left: 1px solid #292929;
 }
 /*----------------------DAY CELL--------------------------*/
 .day {
@@ -220,9 +223,10 @@
   font-size: 14px;
   line-height: 117%;
   font-weight: 400;
-  border-right: 1px solid #292929;
-  border-bottom: 1px solid #292929;;
+  border-left: 1px solid #292929;
+  border-top: 1px solid #292929;;
   background-color: #FFF;
+  position: relative;
 }
 
 .day:hover {
@@ -251,12 +255,11 @@
 .popup{
   position: absolute;
   display: none;
-  top: 200px;
-  left: 200px;
   width: 290px;
-  height: 315px;
+  min-height: 315px;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
   background-color: #FFF;
+  margin: 0 auto;
 }
 .popup::after, .popup::before  {
   content: '';
@@ -276,6 +279,7 @@
 
 .popup__content {
   padding: 12px;
+  flex: 0 1 auto;
 }
 .popup__head {
   text-align: right;
@@ -288,7 +292,6 @@
   height: 8px;
 }
 .popup__form-elements {
-
 }
 .popup__input {
   margin-top: 8px;
@@ -317,16 +320,13 @@
   left: -10px; bottom: 280px;
 }
 
-.popup__form-elements_readyEv {
-
-}
-
 .popup__nameEvent {
   font-size: 18px;
   line-height: 117%;
   color: #292929;
   font-weight: 400;
   margin-top: 8px;
+  overflow-wrap: break-word;
 }
 .popup__dateEvent {
   font-size: 14px;
@@ -334,6 +334,7 @@
   color: #292929;
   font-weight: 300;
   margin: 16px 0px;
+  overflow-wrap: break-word;
 }
 .popup__participantsEvent {
   font-size: 14px;
@@ -346,5 +347,6 @@
   font-weight: 400;
   line-height: 117%;
   color: #292929;
-  margin: 4px 0px -16px 0px;;
+  margin: 4px 0px -16px 0px;
+  overflow-wrap: break-word;
 }

@@ -10,6 +10,7 @@ const popupInputDescr = document.querySelector(".popup__input-descr");
 const closeBtn = document.querySelector(".popup__close-btn");
 const readyBtn = document.getElementById("readyBtn");
 const deleteBtn = document.getElementById("deleteBtn");
+const todayBtn = document.querySelector(".calendar__today-button");
 
 
 const existEventPopup = document.querySelector(".popup_existEvent");
@@ -21,10 +22,9 @@ const closeBtnExistEvent = document.getElementById("closeBtnExistEvent");
 const readyBtnExistEvent = document.getElementById("readyBtnExistEvent");
 const deleteBtnExistEvent = document.getElementById("deleteBtnExistEvent");
 
-
-
-
-const date = new Date();
+let scrollCount = 0;
+let clicked = null;
+let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
 
 const monthsArr = [
     "Январь",
@@ -50,9 +50,6 @@ const weekdaysArr = [
     "Суббота",
     "Воскресенье"
 ];
-
-let clicked = null;
-let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
 
 function openPopup(date) {
     clicked = date;
@@ -82,8 +79,6 @@ function closePopup() {
 
 function saveEvent() {
     popupInput.forEach(function(text) {
-        if (text.value) {
-            text.classList.remove("error");
             let objDataInput = {};
             objDataInput.date = clicked;
             objDataInput.Event = popupInput[0].value;
@@ -93,13 +88,27 @@ function saveEvent() {
             events.push(objDataInput);
             localStorage.setItem("events", JSON.stringify(events));
             closePopup();
-        } else {
-            text.classList.add("error");
-        }
     });
 }
 
+function deleteEvent() {
+    events = events.filter(e => e.date !== clicked);
+    localStorage.setItem('events', JSON.stringify(events));
+    closePopup();
+}
+
+function editDescr() {
+    const eventForDay = events.find(e => e.date === clicked);
+    eventForDay.Descr = popupDescrEvent.value;
+    localStorage.setItem('events', JSON.stringify(events));
+    closePopup();
+}
+
 function displayCalendar() {
+    const date = new Date();
+    if (scrollCount !== 0) {
+        date.setMonth(new Date().getMonth() + scrollCount);
+    }
     date.setDate(1);
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -138,51 +147,57 @@ function displayCalendar() {
         }
 
         const eventForDay = events.find(e => e.date === dayString);
-
+        const eventP = document.createElement("p");
+        const nameP = document.createElement("p");
         if (eventForDay) {
-            const eventP = document.createElement("p");
+            daySquare.style.backgroundColor = "#C2E4FE";
             eventP.classList.add("day__event");
             eventP.textContent = eventForDay.Event;
-            const nameP = document.createElement("p");
             nameP.classList.add("day__name");
             nameP.textContent = eventForDay.Name;
             daySquare.appendChild(eventP);
             daySquare.appendChild(nameP);
-        }
+        } 
+
         daysCalendar.appendChild(daySquare);
+
+        daySquare.addEventListener("mouseenter", function(event) {
+            if (eventP.textContent || nameP.textContent) {
+                event.target.style.backgroundColor = "#27A1FF";
+            }
+        });
+
+        daySquare.addEventListener("mouseleave", function(event) {
+            if (eventP.textContent || nameP.textContent) {
+                event.target.style.backgroundColor = "#C2E4FE";
+            }
+        });
         daySquare.addEventListener('click', () => openPopup(dayString));
     }
 }
 
-let allDays = document.querySelectorAll(".day");
 
 leftBtn.addEventListener("click", function() {
-    date.setMonth(date.getMonth() - 1);
+    scrollCount--;
     displayCalendar();
 });
 
 rightBtn.addEventListener("click", function() {
-    date.setMonth(date.getMonth() + 1);
+    scrollCount++;
+    displayCalendar();
+});
+
+todayBtn.addEventListener("click", function() {
+    scrollCount = 0;
     displayCalendar();
 });
 
 closeBtn.addEventListener("click", closePopup);
 readyBtn.addEventListener("click", saveEvent);
+deleteBtn.addEventListener("click", deleteEvent);
 
-deleteBtn.addEventListener("click", function() {
-    events = events.filter(e => e.date !== clicked);
-    localStorage.setItem('events', JSON.stringify(events));
-    closePopup();
-});
-
-deleteBtnExistEvent.addEventListener("click", function() {
-    events = events.filter(e => e.date !== clicked);
-    localStorage.setItem('events', JSON.stringify(events));
-    closePopup();
-});
-
+deleteBtnExistEvent.addEventListener("click", deleteEvent);
 closeBtnExistEvent.addEventListener("click", closePopup);
-
-readyBtnExistEvent.addEventListener("click", closePopup);
+readyBtnExistEvent.addEventListener("click", editDescr);
 
 displayCalendar();
