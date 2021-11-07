@@ -53,26 +53,39 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="popup popup_existEvent">
-        <div class="popup__content">
-            <div class="popup__head">
-                <button id = "closeBtnExistEvent" class="popup__close-btn">&times;</button>
-            </div>
-                <div class="popup__form-elements">
-                    <div class="popup__nameEvent"></div>
-                    <div class="popup__dateEvent"></div>
-                    <div class="popup__participantsEvent">Участники:</div>
-                    <div class="popup__namesEvent"></div>
-                    <textarea id = "descrExistEvent" class="popup__input-descr input-form" 
-                    cols="30" rows="10" placeholder="Описание"></textarea>
-                <div class="popup__buttons">
-                    <button id = "readyBtnExistEvent" class="popup__button extra-button">Готово</button>
-                    <button id = "deleteBtnExistEvent" class="popup__button-delete extra-button">Удалить</button>
+        </div>
+        <div class="popup popup_existEvent">
+            <div class="popup__content">
+                <div class="popup__head">
+                    <button id = "closeBtnExistEvent" class="popup__close-btn">&times;</button>
+                </div>
+                    <div class="popup__form-elements">
+                        <div class="popup__nameEvent"></div>
+                        <div class="popup__dateEvent"></div>
+                        <div class="popup__participantsEvent">Участники:</div>
+                        <div class="popup__namesEvent"></div>
+                        <textarea id = "descrExistEvent" class="popup__input-descr input-form" 
+                        cols="30" rows="10" placeholder="Описание"></textarea>
+                    <div class="popup__buttons">
+                        <button id = "readyBtnExistEvent" class="popup__button extra-button">Готово</button>
+                        <button id = "deleteBtnExistEvent" class="popup__button-delete extra-button">Удалить</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="popup popup_quickEvent">
+            <div class="popup__content">
+                <div class="popup__head">
+                    <button id ="closeBtnQuickEvent" class="popup__close-btn">&times;</button>
+                </div>
+                <div class="popup__form-elements">
+                    <input type="text" id="eventInput" class="popup__input input-form" placeholder="Дата, Событие, Имена участников">
+                </div>
+                <div class="popup__buttons">
+                    <button class="popup__button-create extra-button">Создать</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
