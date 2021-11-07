@@ -12,10 +12,15 @@ const readyBtn = document.getElementById("readyBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 
 
-const popupReadyEvent = document.querySelector(".popup_readyEv");
+const existEventPopup = document.querySelector(".popup_existEvent");
 const popupNameEvent = document.querySelector(".popup__nameEvent");
 const popupDateEvent = document.querySelector(".popup__dateEvent");
 const popupNamesEvent = document.querySelector(".popup__namesEvent");
+const popupDescrEvent = document.getElementById("descrExistEvent");
+const closeBtnExistEvent = document.getElementById("closeBtnExistEvent");
+const readyBtnExistEvent = document.getElementById("readyBtnExistEvent");
+const deleteBtnExistEvent = document.getElementById("deleteBtnExistEvent");
+
 
 
 
@@ -49,32 +54,50 @@ const weekdaysArr = [
 let clicked = null;
 let events = localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : [];
 
-
 function openPopup(date) {
     clicked = date;
 
     const eventForDay = events.find(e => e.date === clicked);
-    console.log(eventForDay);
 
     if (eventForDay) {
-        popupReadyEvent.style.display = "block";
+        existEventPopup.style.display = "block";
         popupNameEvent.textContent = eventForDay.Event;
         popupDateEvent.textContent = eventForDay.day;
-        popupNamesEvent.textContent += eventForDay.Name;
+        popupNamesEvent.textContent = eventForDay.Name;
+        popupDescrEvent.value = eventForDay.Descr;
     } else {
         newEventPopup.style.display = "block";
     }
-
 }
 
 function closePopup() {
     newEventPopup.style.display = "none";
+    existEventPopup.style.display = "none";
     popupInput.forEach(function(text) {
         text.value = "";
     });
+    popupInputDescr.value = "";
     displayCalendar();
 }
 
+function saveEvent() {
+    popupInput.forEach(function(text) {
+        if (text.value) {
+            text.classList.remove("error");
+            let objDataInput = {};
+            objDataInput.date = clicked;
+            objDataInput.Event = popupInput[0].value;
+            objDataInput.day = popupInput[1].value;
+            objDataInput.Name = popupInput[2].value;
+            objDataInput.Descr = popupInputDescr.value;
+            events.push(objDataInput);
+            localStorage.setItem("events", JSON.stringify(events));
+            closePopup();
+        } else {
+            text.classList.add("error");
+        }
+    });
+}
 
 function displayCalendar() {
     date.setDate(1);
@@ -142,24 +165,24 @@ rightBtn.addEventListener("click", function() {
     date.setMonth(date.getMonth() + 1);
     displayCalendar();
 });
-closeBtn.addEventListener("click", closePopup);
 
-readyBtn.addEventListener("click", function() {
-    popupInput.forEach(function(text) {
-        if (text.value) {
-            text.classList.remove("error");
-            let objDataInput = {};
-            objDataInput.date = clicked;
-            objDataInput.Event = popupInput[0].value;
-            objDataInput.day = popupInput[1].value;
-            objDataInput.Name = popupInput[2].value;
-            events.push(objDataInput);
-            localStorage.setItem("events", JSON.stringify(events));
-            closePopup();
-        } else {
-            text.classList.add("error");
-        }
-    });
+closeBtn.addEventListener("click", closePopup);
+readyBtn.addEventListener("click", saveEvent);
+
+deleteBtn.addEventListener("click", function() {
+    events = events.filter(e => e.date !== clicked);
+    localStorage.setItem('events', JSON.stringify(events));
+    closePopup();
 });
+
+deleteBtnExistEvent.addEventListener("click", function() {
+    events = events.filter(e => e.date !== clicked);
+    localStorage.setItem('events', JSON.stringify(events));
+    closePopup();
+});
+
+closeBtnExistEvent.addEventListener("click", closePopup);
+
+readyBtnExistEvent.addEventListener("click", closePopup);
 
 displayCalendar();
