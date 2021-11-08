@@ -12,7 +12,6 @@ const deleteBtn = document.getElementById("deleteBtn");
 const todayBtn = document.querySelector(".calendar__today-button");
 const addBtn = document.querySelector(".header__add-button");
 
-
 const existEventPopup = document.querySelector(".popup_existEvent");
 const popupNameEvent = document.querySelector(".popup__nameEvent");
 const popupDateEvent = document.querySelector(".popup__dateEvent");
@@ -210,4 +209,5 @@ readyBtnExistEvent.addEventListener("click", editDescr);
 closeBtnQuickEvent.addEventListener("click", closePopup);
 
 displayCalendar();
+
 
