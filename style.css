@@ -31,7 +31,9 @@
   input, textarea {outline:none;}
   input:active, textarea:active {outline:none;}
   :focus {outline:none;}
+
 /*----------------------WRAPPER------------------------*/
+
 .wrapper {
     min-height: 100%;
     width: 100%;
@@ -44,13 +46,17 @@
 .wrapper header {
   align-self: stretch;
 }
+
 /*--------------------CONTAINER--------------------------*/
+
 .container {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 12px;
 }
+
 /*-----------------------CONTROL ELEMENTS------------------*/
+
 .input-form {
   display: block;
   height: 28px;
@@ -146,7 +152,9 @@
   display: flex;
   justify-content: right;
 }
+
 /*---------------------------CALENDAR---------------------------*/
+
 .calendar__nav {
   display: flex;
 }
@@ -201,7 +209,9 @@
   border-right: 1px solid #292929;
   overflow: hidden;
 }
+
 /*----------------------DAY CELL--------------------------*/
+
 .day {
   width: calc(1000px/7);
   height: 120px;
@@ -236,8 +246,10 @@
   color: #6B6B6B;
   font-weight: 400;
 }
-/*---------------POPUPS-----------------*/
-.popup{
+
+/*---------------POPUP-----------------*/
+
+.popup {
   position: absolute;
   display: none;
   width: 290px;
